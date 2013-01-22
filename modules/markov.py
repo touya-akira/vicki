@@ -12,7 +12,7 @@ chattiness=0.05
 STOP_WORD = "\n"
 
 def add_to_brain(phenny, input):
-	f = open('training_text.txt', 'a')
+    f = open('training_text.txt', 'a')
     f.write(input.group() + '\n')
     f.close()
     buf = [STOP_WORD] * chain_length
@@ -26,15 +26,19 @@ add_to_brain.rule = r'.*'
 add_to_brain.priority = 'medium'
 
 def reload_brain(msg, chain_length=2):
-	buf = [STOP_WORD] * chain_length
-	for word in msg.split():
-		markov[tuple(buf)].append(word)
-    	del buf[0]
-    	buf.append(word)
-	markov[tuple(buf)].append(STOP_WORD)
+    buf = [STOP_WORD] * chain_length
+    for word in msg.split():
+        markov[tuple(buf)].append(word)
+        del buf[0]
+        buf.append(word)
+    markov[tuple(buf)].append(STOP_WORD)
 
-
-		
-
+def minit(phenny, input):
+	f = open('training_text.txt', 'r+')
+   	for line in f:
+    	add_to_brain(line, chain_length)
+    print 'Brain Reloaded'
+    f.close()
+minit.commands = ['minit']
 
 
