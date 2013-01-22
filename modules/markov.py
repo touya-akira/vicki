@@ -33,12 +33,12 @@ def reload_brain(msg, chain_length=2):
         buf.append(word)
     markov[tuple(buf)].append(STOP_WORD)
 
-#def mminit(phenny, input):
-f = open('training_text.txt', 'r+')
-for line in f:
-   	reload_brain(line, chain_length)
-#phenny.say('Brain Reloaded')
-f.close()
-#mminit.commands = ['minit']
+def mminit(phenny, input):
+	f = open('training_text.txt', 'r+')
+	for line in f:
+   		reload_brain(line, chain_length)	
+	phenny.say('Brain Reloaded')
+	f.close()
+mminit.commands = ['minit']
 
 
