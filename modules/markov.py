@@ -36,7 +36,7 @@ def reload_brain(msg, chain_length=2):
 def minit(phenny, input):
 	f = open('training_text.txt', 'r+')
    	for line in f:
-    	add_to_brain(line, chain_length)
+    	reload_brain(line, chain_length)
     phenny.say('Brain Reloaded')
     f.close()
 minit.commands = ['minit']
