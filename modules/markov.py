@@ -37,7 +37,7 @@ def minit(phenny, input):
 	f = open('training_text.txt', 'r+')
    	for line in f:
     	add_to_brain(line, chain_length)
-    print 'Brain Reloaded'
+    phenny.say('Brain Reloaded')
     f.close()
 minit.commands = ['minit']
 
